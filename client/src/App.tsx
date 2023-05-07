@@ -1,18 +1,19 @@
-import { Admin, CustomRoutes, Resource } from 'react-admin';
-import { Route } from 'react-router-dom';
-import CssBaseline from '@mui/material/CssBaseline';
-import StockChart from './pages/stockPage';
+import RatingProvider from 'providers/CandleStickProvider';
+import { HashRouter, Route, Routes } from 'react-router-dom';
+import StockChart from './pages/Stock';
 
-export default function App() {
+const App = () => {
   return (
     <>
-      <CssBaseline />
-      <Admin disableTelemetry>
-        <Resource name="stockChart" />
-        <CustomRoutes noLayout>
-          <Route path="/stockChart" element={<StockChart />} />
-        </CustomRoutes>
-      </Admin>
+      <RatingProvider>
+        <HashRouter>
+          <Routes>
+            <Route path="/stock" element={<StockChart />} />
+          </Routes>
+        </HashRouter>
+      </RatingProvider>
     </>
   );
-}
+};
+
+export default App;
